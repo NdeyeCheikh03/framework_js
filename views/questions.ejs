@@ -1,0 +1,14 @@
+<%- include('header') -%>
+
+<p>Questions pour un champion</p>
+<ul>
+    <% for (let question of questions) { %> <!--commencer le parcours de la liste qcms -->
+    <li><%= question.name %> : <%= question.enonce %> : +<%= question.score %> points</li> <!-- Introduction Vanilla JS (Javascript): 20 points -->
+
+     <!-- afficher l'élément de la liste et le nb de points du Qcm-->
+    <% } %> <!-- penser à fermer le corps de la boucle -->
+</ul>
+<a href="Qcms">Voir réponse</a>
+
+
+<%- include('footer') -%>
