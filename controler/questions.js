@@ -1,5 +1,44 @@
 const {questions, addquestion} = require('../models/inmemory');
 
+class Question {
+    #id;
+    #name;
+    #theme;
+    #nbpoints;
+
+    constructor(QuestionTocreate) {
+      this.#id = QuestionTocreate.id;
+      this.#name = QuestionTocreate.name;
+      this.#theme = QuestionTocreate.theme;
+
+      this.#nbpoints = QuestionTocreate.nbpoints;
+    }
+
+    get id() {
+      return this.#id;
+    }
+
+    get name() {
+      return this.#name;
+    }
+
+    set name(value) {
+      this.#name = value;
+    }
+
+    get theme() {
+      return this.#theme;
+    }
+
+
+
+
+
+    toJSON(key) {
+      return { id: this.#id, name: this.#name };
+    }
+  }
+
 const displayquestion = (req, res) => {
     for (let question of questions) {
         console.log(`${question.score}: ${typeof(question.score)}`);
@@ -32,4 +71,7 @@ const createNewquestion = (req, res) => {
     res.redirect('/questions');
 };
 
-module.exports = {displayquestion, displayFormquestion, createNewquestion, displayquestionJson, displayquestionDetailed};
+
+
+
+module.exports = {Question, displayquestion, displayFormquestion, createNewquestion, displayquestionJson, displayquestionDetailed};
